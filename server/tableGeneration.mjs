@@ -58,10 +58,10 @@ const sent = [
 async function main() {
  
  // Delete all existing rows
-  await db.run('DELETE FROM minigames');
+  //await db.run('DELETE FROM minigames');
   
   // Reset AUTOINCREMENT counter
-  await db.run("DELETE FROM sqlite_sequence WHERE name='minigames'");
+  //await db.run("DELETE FROM sqlite_sequence WHERE name='minigames'");
  
   // Insert sentences with length (ignoring spaces)
   /* for (const text of sent) {
@@ -70,7 +70,35 @@ async function main() {
   }
 
   console.log('All sentences inserted successfully and table reset!');
-   */ await db.close();
+   */
+  
+  await db.close();
 }
 
-main();
+
+export function addSentence(sentence) {
+  return new Promise((resolve, reject) => {
+    // Trim to remove accidental spaces
+    const trimmed = sentence.trim();
+
+    // Validate length
+    if (trimmed.length < 30 || trimmed.length > 50) {
+      return reject(new Error("Sentence length must be between 30 and 50 characters."));
+    }
+
+    const sql = "INSERT INTO sentences (text) VALUES (?)";
+    db.run(sql, [trimmed], function (err) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve({ s_id: this.lastID, text: trimmed, length: trimmed.length });
+      }
+    });
+  });
+}
+
+
+//main();
+/* addSentence("This song enoength check.")
+  .then(res => console.log("Added:", res))
+  .catch(err => console.error(err.message)); */
