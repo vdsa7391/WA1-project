@@ -1,0 +1,159 @@
+user--> login request---> login form--->enter---> send the request to server 
+
+    authentication---> if sucess--->  send ( username, userid, cokkie) to react 
+                                                --> redirect to home page with user credentials
+                                                 ((home page design with user credentials (usrname , coins))
+                  ---> failure--> login failed message box
+
+
+    user homepage--> game display with a play now button---> after click on that button
+
+                --> rules of the games + a move on button **mention that as sson as you click next the timer will start**
+                    
+                --->sentence card display & timer 
+                    (sentence card design: sentence + coin remaing + alpahtes filter with categories and with there cost 
+                    + double cost reduction on wrong guess line 
+                    + button to open a text box with a no cost deducted line 
+                    + abort button
+                    + check button)
+
+                    --->alhabet guessing :
+                        ---> wrong guess: card desing change showing: wrong guess + double (in red) cost deducted + and the remaining amount 
+                                -->after 5-8sec-->flip to game card with updated coins 
+                        ---> correct guess: card desing change showing: correct guess + cost deducted + and the remaining amount
+                                -->after 5-8sec-->flip to game card with updated coins 
+                    --->sentence guessing---> alphabet compnent shrink + textbox appear with a no penalty sign
+                        ---> wrong guess: card desing change showing: wrong guess + NO cost deducted + and the remaining amount
+                                --->after 5-8sec-->flip to game card
+                        ---> correct guess: card desing change showing: CONGRAGULATION message + GAME OVER (** don't change the order of this) 
+                                                                        + correct ANSWER 
+                                                                        + PRIZE: 100 coins + confetti
+                                                                        + PLAY AGAIN button --redirect to-->the same page when we do the play now button
+                                                                        + GO to dashboard button--redirect to-->user homepage with game display page
+                                
+                    --->10 second remaining pop up and timer in red
+
+                    ---> time ended: card desing change showing: GAME OVER + well done message 
+                                                                + correct ANSWER 
+                                                                + 20 points deduct
+                                                                + remaining amount 
+                                                                + TRY AGAIN button--redirect to-->the same page when we do the play now button
+                                                                + GO to dashboard button--redirect to-->user homepage with game display page
+                    ---> after guessing by alphabet :
+                    *** after every aplhbet guess check---> send alphabet + current coins + current string ( for double checking)
+                            ---> if the alphbet is in the array of character of that sentence
+                                            ---> update the current annswer string and CHECK THE string with the official answer (IMPORTANT CHECK)
+                                                        --> if matched: send the congratulation text and whatver you are sending when the sentence match succefully
+                                                        --> else: save the current string to the server and then send react 
+                                                                        --->the updated string 
+                                                                        --->updated cost
+                                                                        --->deducted cost
+                                                                        --->set guess varibale i.e wrong guess
+                            ---> if not: after the first check just send react:
+                                    --->the string
+                                    --->set guess varibale       
+                                    --->updated cost
+                                    --->reducted cost 
+                                    ---> set the varibale to "double" so that in the frontend it will help to show the red sign for double cost reduction
+                                         and to tell them that we deduct the double cost    
+
+                    ---> sentence guessing: send --> current string 
+                            ---> if matched: 
+                                    --->correct string ( the official one so that we have the uppercase and lowercase as well otherwise
+                                                if we just take the user filled string then it will only have lowercase + it's is a good practice)  
+                                    --->set the varibale to : "congratulation" instead of wrong guess or correct guess
+                                    --->set the prize varible to true ---> which basically unlock prize compnent
+                                    ---> updated cost
+                                    --->deducted cost (0 in this case)
+
+                    
+                    
+        *******--->after every succful game or end of game or ANY GUESS: whenever user "click either play gain" or
+         "go to dashboard" or "abort" or "our page flip after any guess" we have to 
+                    check the revalute the coins:
+                            ---> if win: add 100+ coins 
+                            ---> if time ended: 20 points deducted
+                            ---> at every flip: remaining amount show ( because backend calulate the rem)
+                            OVERALL just show the updted coins after flip/ button click(abort/play again/ dahboard)
+                            
+                            why? because in the end we just show the prize on the card but didnt actually add it
+                            so always check the varibale set by the server i.e congratulation/ correct guess/ wrong guess. 
+
+*********************************************************************************************************************************************                               
+                                                
+                                
+   non-login user: dashboard with a game display with play now button
+                ----> after clicking the button
+                    --> rules of the games + a move on button **mention that as sson as you click next the timer will start**
+                ---> after clicking next
+                    -->sentence card display & timer 
+                    (sentence card design: sentence + normal alphabets without any category ( just plain keyboard)
+                    + button to open a text box  
+                    + abort button
+                    + check button)   
+
+                --->alhabet guessing :
+                        ---> wrong guess: card desing change showing: wrong guess
+                                -->after 3 sec--> flip to game card  
+                        ---> correct guess: card desing change showing: correct guess 
+                                -->after 3 sec--> flip to game card  
+                    --->sentence guessing ---> alphabet component shrink + textbox appear
+                        ---> wrong guess: card desing change showing: wrong guess 
+                                --->after 3 sec-->flip to game card
+                        ---> correct guess: card desing change showing:  CONGRAGULATION message + GAME OVER (** don't chaneg the order of this)
+                                                                        + correct ANSWER 
+                                                                        + confetti
+                                                                        + PLAY AGAIN button --redirect to-->the same page when we do the play now button
+                                                                        + GO to dashboard button--redirect to-->user homepage with game display page
+                                
+                    --->10 second remaining pop up and timer in red
+
+                    ---> time ended: card desing change showing: GAME OVER + well done message 
+                                                                + correct ANSWER 
+                                                                + TRY AGAIN button--redirect to-->the same page when we do the play now button
+                                                                + GO to dashboard button--redirect to-->user homepage with game display page
+                    ---> after guessing by alphabet :
+                    *** after every aplhbet guess check---> send alphabet + current coins + current string ( for double checking):
+                            ---> if the alphbet is in the array of character of that sentence
+                                            ---> update the current annswer string and CHECK THE string with the official answer (IMPORTANT CHECK)
+                                                        --> if matched: send the congratulation text and whatver you are sending when the sentence match succefully
+                                                        --> else: save the current string to the server and then send react 
+                                                                        --->the updated string 
+                                                                        --->set guess varibale   
+                                                                        
+                            ---> if not: after the first check just send react:
+                                    ---> the string 
+                                    --->set guess varibale   
+
+                     ---> sentence guessing: send --> current string 
+                            ---> if matched: 
+                                    --->correct string ( the official one so that we have the uppercase and lowercase as well otherwise
+                                                if we just take the user filled string then it will only have lowercase + it's is a good practice)  
+                                    --->set the varibale to : "congratulation" instead of wrong guess or correct guess
+                                    
+
+********************************************************************************************************************************
+
+user dahboard:
+    ---> username , logout button
+    ---> game display with a play now button
+    ---> at bottom: match history:  game number (just 1,2...), game result, coins reduced, coins gained, timestamp
+
+non-logn user dashboard:
+    ---> login 
+    ---> game display with play now button
+    
+
+
+
+
+                                        
+
+
+                    
+                                
+
+
+                
+
+                                                
