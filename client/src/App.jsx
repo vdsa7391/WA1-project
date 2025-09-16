@@ -115,7 +115,7 @@ function App() {
       <div>...page loading...</div>
     ):
     <>
-    {showHeader && <Header user={user} loggedIn={loggedIn} handleLogout={handleLogout} gameActive={isInGamePage && stage === 3 } />}
+    {showHeader && <Header user={user} loggedIn={loggedIn} handleLogout={handleLogout} gameActive={isInGamePage &&  stage === 3 } />}
 
       <Container fluid className="p-0">
       {timerActive && stage === 3 && <Timer duration={60} onTimeout={() => {
