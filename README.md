@@ -188,7 +188,7 @@
 
 ## Screenshot
 
-![Screenshot](./img/screenshot.jpg)
+![Screenshot](./img/game_in_progress.png)
 
 ## Users Credentials
 
