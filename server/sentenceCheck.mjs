@@ -1,40 +1,32 @@
 // backend/sentenceHelper.js
 export function maskSentence(sentence) {
-  return sentence.split("").map(ch => (ch === " " ? "\u00A0\u00A0" : "_")).join(" ");
+  return sentence.split("").map(ch => (ch === " " ? "\u00A0\u00A0\u00A0" : "_")).join(" ");
 }
   
-/* export function maskSentence(sentence) {
-  return sentence
-    .split("")
-    .map(ch => {
-      if (ch === " ") return "\u00A0\u00A0";  // non-breaking spaces
-      if (/[a-zA-Z0-9]/.test(ch)) return "_";       // underscore for letters/numbers
-      return ch;                                    // keep punctuation
-    })
-    .join(" ");
-} */
-
-
 
 export function applyGuess(secretSentence, currentMasked, guess) {
-  const s = secretSentence;
-  const lower = s.toLowerCase();
-  const g = guess.toLowerCase();
+  const lowerSecret = secretSentence.toLowerCase();
+  const lowerGuess = guess.toLowerCase();
 
   let found = false;
-  let updated = "";
+  const maskedArr = currentMasked.split(" ");
 
-  for (let i = 0; i < s.length; i++) {
-    if (lower[i] === g) {
-      updated += s[i];
-      found = true;
-    } else {
-      updated += currentMasked[i];
+  const updatedArr = maskedArr.map((ch, i) => {
+    if (secretSentence[i] === " ") {
+      return "\u00A0\u00A0\u00A0";
     }
-  }
+    if (lowerSecret[i] === lowerGuess) {
+      found = true;
+      return secretSentence[i];
+    }
+    return ch;
+  });
 
-  return { updatedString: updated, correct: found };
+  const updatedString = updatedArr.join(" ");
+
+  return { updatedString, correct: found };
 }
+
 
 export function isSentenceComplete(masked) {
   return !masked.includes("_");
