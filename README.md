@@ -144,7 +144,7 @@
       correctSentence: string
     }
 
-## Errors for API [6-11] is same as API [4]
+** Errors for API [6-11] is same as API [4]
 
 ## Database Tables
 
