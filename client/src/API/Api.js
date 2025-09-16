@@ -36,14 +36,14 @@ async function logout() {
 }
 
 
-async function getCurrentUser() {
+/* async function getCurrentUser() {
   const res = await fetch(URI + '/session/current', {
     credentials: 'include'
   });
 
   if (!res.ok) throw new Error("Not authenticated");
   return res.json();
-}
+} */
 
 export async function getAlphabetTableAPI() {
   const r = await fetch(`${URI}/alphabet`);
@@ -191,4 +191,4 @@ export async function endMini(miniGameId, reason) {
 
 
 
-export {logIn, logout, getCurrentUser, startGame, startMiniGame};
+export {logIn, logout, /* getCurrentUser, */ startGame, startMiniGame};

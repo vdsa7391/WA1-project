@@ -65,7 +65,6 @@ function App() {
   const handleLogin = async (credentials) => {
     try {
       const loginUser = await logIn(credentials);
-      console.log(loginUser)
       setUser(loginUser);
       setLoggedIn(true);
       setUserLoaded(true);
@@ -155,10 +154,6 @@ function App() {
 
 
     }
-
-
-
-    
       
     </>
   )

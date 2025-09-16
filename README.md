@@ -175,7 +175,6 @@
 - Table sentences – contains the pool of guessable sentences
   - s_id (INTEGER, PK, AUTOINCREMENT) – sentence ID
   - text (TEXT, NOT NULL) – sentence content
-  - length (INTEGER, NOT NULL) – sentence length
 
 
   ## Main React Components

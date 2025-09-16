@@ -58,19 +58,19 @@ const sent = [
 async function main() {
  
  // Delete all existing rows
-/*   await db.run('DELETE FROM sentences');
+  await db.run('DELETE FROM minigames');
   
   // Reset AUTOINCREMENT counter
-  await db.run("DELETE FROM sqlite_sequence WHERE name='sentences'");
- */
+  await db.run("DELETE FROM sqlite_sequence WHERE name='minigames'");
+ 
   // Insert sentences with length (ignoring spaces)
-  for (const text of sent) {
+  /* for (const text of sent) {
     const length = text.replace(/\s+/g, "").length;
     await db.run('INSERT INTO sentences (text, length) VALUES (?, ?)', text, length);
   }
 
   console.log('All sentences inserted successfully and table reset!');
-   await db.close();
+   */ await db.close();
 }
 
 main();

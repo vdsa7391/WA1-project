@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Row, Col, Button, Form, Card, Badge } from "react-bootstrap";
 import {
   guessLetterGame,
@@ -40,7 +40,7 @@ function Stage3({
   }, [alphabet, alphabetTable]);
 
 
-  const flipDelay = 3000;
+  const flipDelay = 1500;
 
   function resetInputs() {
     setAlphabet("");
@@ -48,8 +48,7 @@ function Stage3({
   }
 
   // --- handleLetter, handleSentence, handleAbort, onTimeUp --- 
-  // Keep all your existing logic here unchanged
-
+ 
   function resetInputs() {
     setAlphabet("");
     setSentence("");
@@ -198,22 +197,7 @@ function Stage3({
         }}
       >
         {/* Column 1 - Vowels */}
-       {/*  { loggedIn && <div style={{ flex: "1 1 100px" }}>
-          <Card className="h-100">
-            <Card.Header className="text-center bg-info text-white">Vowels</Card.Header>
-            <Card.Body>
-              {Object.keys(alphabetTable)
-                .filter((ch) => ["a", "e", "i", "o", "u"].includes(ch))
-                .map((c) => (
-                  <div key={c} style={{ display: "flex", justifyContent: "space-between", padding: "4px", marginBottom: "4px", background: "#f0f0f0", borderRadius: "4px" }}>
-                    <strong>{c.toUpperCase()}</strong>
-                    <Badge bg="info">{alphabetTable[c]}</Badge>
-                  </div>
-                ))}
-            </Card.Body>
-          </Card>
-        </div>} */}
-
+       
         <div style={{ flex: "1 1 200px" }}>
           <Card className="h-100">
             <Card.Header className="text-center bg-info text-white">Vowels</Card.Header>
@@ -378,23 +362,6 @@ function Stage3({
         </div>
 
         {/* Column 3 - Consonants */}
-        {/* { loggedIn && <div style={{ flex: "1 1 150px" }}>
-          <Card className="h-100">
-            <Card.Header className="text-center bg-warning text-dark">Consonants</Card.Header>
-            <Card.Body>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "6px", justifyContent: "center", maxWidth: "100%" }}>
-                {Object.keys(alphabetTable)
-                  .filter((ch) => !["a", "e", "i", "o", "u"].includes(ch))
-                  .map((c) => (
-                    <div key={c} style={{ display: "flex", justifyContent: "space-between", padding: "2px 6px", background: "#f0f0f0", borderRadius: "4px", fontSize: "0.9rem", minWidth: "40px" }}>
-                      <strong>{c.toUpperCase()}</strong>
-                      <Badge bg="secondary">{alphabetTable[c]}</Badge>
-                    </div>
-                  ))}
-              </div>
-            </Card.Body>
-          </Card>
-        </div>} */}
 
         <div style={{ flex: "1 1 250px" }}>
           <Card className="h-100">
