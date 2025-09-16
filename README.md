@@ -60,7 +60,7 @@
   - Response Body: Updated game state
       {
         updatedString: string
-        message: string,  //game status: congratulation/correct guess/ wrong guess
+        message: string,  //game status: congratulations/correct guess/ wrong guess
         deductedCoins: integer,   // number of coiuns deducted
         remainingCoins: integer, //remainingCoins + 100 (in case of win),
         double: boolean, // not really used when win, but harmless
@@ -79,11 +79,11 @@
   - Response Body: Updated game state
     {
       message: string,
-      deductedCoins: ineteger,
+      deductedCoins: integer,
       remainingCoins: integer,
       gameOver: boolean,
       correctSentence: string,
-      updatedString: string  // game_playes (integer) in case of win
+      updatedString: string  // game_played (integer) in case of win
     }
 
 8- POST `/api/minigames/:miniGameId/guess-letter` -  Submit a letter guess in a mini-game for guest users.
@@ -184,7 +184,24 @@
 - `GreatButton` (in `GreatButton.js`): component purpose and main functionality
 - ...
 
-(only _main_ components, minor ones may be skipped)
+  ## Main React Components
+
+- `Header` (in `Header.jsx`): Displays the top navigation bar. Shows login/logout buttons for guests and user information (username, coins, matches played) for logged-in users. It also disables interactions during an active game to prevent interruptions.
+
+- `LoginForm` (in `LoginForm.jsx`): Handles user authentication. Collects email and password, validates input, and calls the login API to authenticate users.
+
+- `Game` (in `Game.jsx`): Main game container. Controls which stage component is displayed (Stage1-Stage4) based on the current stage state. Passes necessary props such as logged-in status, user data, timer controls, and game results to child stages.
+
+- `Stage1` (in `stages/Stage1.jsx`): Initial landing stage. Shows the game poster and a "Play Now" button. For logged-in users, it checks if coins are available before allowing the game to start.
+
+- `Stage2` (in `stages/Stage2.jsx`): Rules and instructions stage. Shows game rules and, for logged-in users, displays their current coin count. Contains the "Start Game" button that triggers Stage3 and activates the timer.
+
+- `Stage3` (in `stages/Stage3.jsx`): Main gameplay stage. Users guess letters or full sentences. Displays alphabet cost for logged-in users and a countdown timer. Handles letter/sentence input and submission to the server API. Automatically navigates to Stage4 when the timer ends.
+
+- `Stage4` (in `stages/Stage4.jsx`): Result stage. Displays whether the user won, lost, or ran out of time. Shows final score, coins earned or deducted, and provides buttons to restart the game or navigate to the dashboard/home page.
+
+- `Timer` (in `Timer.jsx`): Countdown timer component used in Stage3. Starts when the game begins and automatically triggers Stage 4 when time runs out.
+
 
 ## Screenshot
 
