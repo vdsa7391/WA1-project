@@ -10,11 +10,11 @@
      - If logged in: shows matches played, username, user coins, and Logout button.
    - The body of / dynamically changes depending on the active game stage:
      - Stage 1: Game poster with description and “Play Now” button.
-     - Stage 2: Rules page with game instructions and “Start” button.
-     - Stage 3: The actual game component with a masked sentence, alphabet table, and a 60-second countdown timer.
+     - Stage 2: Rules page with game instructions (differnt for Logged-in and Guest-user) and a“Start” button.
+     - Stage 3: The actual game component with a masked sentence, alphabet table, abort button and a 60-second countdown timer.
      - Stage 4: Result page showing win/lose outcome, penalties/rewards with a "play again" button.
 
-- Route `/login`: Login page with a form for user authentication. Redirects to `/` if already logged in.
+- Route `/login`: Login page with a form for user authentication. Redirects to `/` if logged in.
 
 ## API Server
 
@@ -46,7 +46,7 @@
 
 5- POST `/api/minigames` - Create a new mini-game for guest users.
   - request body: None
-  - response body: { "miniGameID" : Integer , "string" : "maseked sentence" }  -> example of string: "__ _ __"
+  - response body: { "miniGameID" : Integer , "string" : "masked sentence" }  -> example of string: "__ _ __"
   - Error: 503 Service Unavailable → failed to create mini-game
 
 6- POST `/api/users/:userId/games/:gameId/guess-letter` - Submit a letter guess for a logged-in user’s game.
@@ -54,19 +54,19 @@
   - Request Body:
       {
         "alphabet": character,
-        "currentString": "_ _ _", // masked sentence string
+        "currentString": "_ _ _" // masked sentence string,
         "coins": integer
       }
   - Response Body: Updated game state
       {
-        updatedString: string
-        message: string,  //game status: congratulations/correct guess/ wrong guess
-        deductedCoins: integer,   // number of coiuns deducted
-        remainingCoins: integer, //remainingCoins + 100 (in case of win),
-        double: boolean, // not really used when win, but harmless
-        gameOver: boolean, // game is over or not
-        correctSentence: string, // correct sentence
-        game_played: integer // only in case of win 
+        updatedString: string,
+        message: string  //game status: congratulations/correct guess/ wrong guess,
+        deductedCoins: integer   // number of coiuns deducted,
+        remainingCoins: integer //remainingCoins + 100 (in case of win),
+        double: boolean // not really used when win, but harmless,
+        gameOver: boolean // game is over or not,
+        correctSentence: string // correct sentence,
+        game_played: integer // only in case of win ,
       }
 
 7- POST `/api/users/:userId/games/:gameId/guess-sentence` - Submit a full sentence guess for a logged-in user’s game.
