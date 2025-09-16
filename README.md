@@ -144,13 +144,9 @@
       correctSentence: string
     }
 
-** Errors for API [6-11] is same as API [4]
+## Errors for API [6-11] is same as API [4]
 
 ## Database Tables
-
-- Table `users` - contains xx yy zz
-- Table `something` - contains ww qq ss
-- ...
 
 - Table user – contains authentication and player stats
   - id (INTEGER, PK, AUTOINCREMENT) – unique user identifier
@@ -168,7 +164,7 @@
 - Table games – contains logged-in users’ game sessions
   - gameid (INTEGER, PK, AUTOINCREMENT) – unique game ID
   - s_id (INTEGER, FK → sentences.s_id) – target sentence ID
- - result (TEXT, default "ongoing") – game result status
+  - result (TEXT, default "ongoing") – game result status
   - userid (INTEGER, FK → user.id) – owner of the game
 
 - Table minigames – contains anonymous (non-logged-in) game sessions
