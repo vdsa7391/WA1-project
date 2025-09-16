@@ -31,10 +31,9 @@ function MiniGame(minigameid, s_id, result = "ongoing") {
 }
 
 // Sentences table
-function Sentence(s_id, text, length) {
+function Sentence(s_id, text) {
   this.s_id = s_id;
   this.text = text;
-  this.length = length;
 }
 
 

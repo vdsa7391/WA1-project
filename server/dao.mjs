@@ -7,7 +7,7 @@ import {
   sentencesEqual,
 } from "./sentenceCheck.mjs";
 
-/* ---------------- Utilities ---------------- */
+/* ---------------- GET functions ---------------- */
 
 function getSentenceCount() {
   return new Promise((resolve, reject) => {
@@ -76,18 +76,6 @@ function getUserCoins(userId) {
   });
 }
 
-function incrementGamesPlayed(userId) {
-  return new Promise((resolve, reject) => {
-    db.run(
-      "UPDATE user SET game_played = game_played + 1 WHERE id = ?",
-      [userId],
-      function (err) {
-        if (err) reject(err);
-        else resolve();
-      }
-    );
-  });
-}
 
 function getGamesPlayed(userId) {
   return new Promise((resolve, reject) => {
@@ -98,8 +86,6 @@ function getGamesPlayed(userId) {
     });
   });
 }
-
-
 
 
 export function getAlphabetTable() {
@@ -126,6 +112,20 @@ export function getAlphabetTable() {
 }
 
 
+/* ---------------- SET functions ---------------- */
+
+function incrementGamesPlayed(userId) {
+  return new Promise((resolve, reject) => {
+    db.run(
+      "UPDATE user SET game_played = game_played + 1 WHERE id = ?",
+      [userId],
+      function (err) {
+        if (err) reject(err);
+        else resolve();
+      }
+    );
+  });
+}
 
 function setUserCoins(userId, newCoins) {
   return new Promise((resolve, reject) => {
@@ -167,7 +167,7 @@ function setMiniGameResult(miniGameId, result) {
   });
 }
 
-/* ------------- Creation (from earlier flow, dynamic range) ------------- */
+/* ------------- Creat games ------------- */
 
 export async function createGame(userId) {
   const total = await getSentenceCount();
@@ -212,7 +212,7 @@ export async function createMiniGame() {
   });
 }
 
-/* ------------------- Guessing: LOGGED-IN (coins) ------------------- */
+/* ------------------- Guessing: LOGGED-IN  ------------------- */
 
 export async function guessLetterLoggedIn({ userId, gameId, letter, currentString }) {
   // gather inputs
@@ -301,7 +301,7 @@ export async function guessSentenceLoggedIn({ userId, gameId, sentence, currentS
   };
 }
 
-/* ------------------- Guessing: MINI-GAME (no coins) ------------------- */
+/* ------------------- Guessing: MINI-GAME ------------------- */
 
 export async function guessLetterMini({ miniGameId, letter, currentString }) {
   const s_id = await getSidByMiniId(miniGameId);
@@ -346,7 +346,7 @@ export async function guessSentenceMini({ miniGameId, sentence, currentString })
   };
 }
 
-/* ------------------- End / Abort helpers ------------------- */
+/* ------------------- End / Abort------------------- */
 
 export async function endGameLoggedIn({ userId, gameId, reason }) {
   const currentCoins = await getUserCoins(userId);
@@ -383,7 +383,6 @@ export async function endGameLoggedIn({ userId, gameId, reason }) {
     game_played: updatedGamesPlayed 
   };
 }
-
 
 
 export async function endMiniGame({ miniGameId, reason }) {

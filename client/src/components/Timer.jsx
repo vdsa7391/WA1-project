@@ -14,7 +14,7 @@ export default function Timer({ duration, onTimeout }) {
     return () => clearInterval(timer);
   }, []);
 
-  // trigger onTimeout safely
+  // trigger 
   useEffect(() => {
     if (timeLeft <= 0) {
       onTimeout();

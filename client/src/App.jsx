@@ -94,7 +94,7 @@ function App() {
     }
   }, [message]);
 
-  // controlled function for state variable change
+  // controlled function for state variable change suggested by professor
 
   const stage_set = (n) => setStage(n);
   const set_time = (flag) => setTimerActive(flag);

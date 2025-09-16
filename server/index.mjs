@@ -72,7 +72,7 @@ app.use(session({
 app.use(passport.authenticate('session'));
 
 
-// API for login , logout, getCurrentUser
+// API for login , logout
 
 app.post('/api/login', function(req, res, next) {
   passport.authenticate('local', (err, user, info) => {
@@ -104,6 +104,8 @@ app.post('/api/logout', (req, res) => {
 
 
 //     API 
+
+/* ---------- get the alphabets at first render---------- */
 
 
 app.get("/api/alphabet", async (req, res) => {
