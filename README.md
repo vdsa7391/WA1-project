@@ -7,11 +7,11 @@
 - Route`/`: Main game page.
    - The Header is always visible (except on the login page).
      - If not logged in: shows a Login button.
-     - If logged in: shows username, matches played, user coins, and Logout button.
+     - If logged in: shows matches played, username, user coins, and Logout button.
    - The body of / dynamically changes depending on the active game stage:
      - Stage 1: Game poster with description and “Play Now” button.
      - Stage 2: Rules page with game instructions and “Start” button.
-     - Stage 3: The actual game component with masked sentence, alphabet table, and a 60-second countdown timer.
+     - Stage 3: The actual game component with a masked sentence, alphabet table, and a 60-second countdown timer.
      - Stage 4: Result page showing win/lose outcome, penalties/rewards with a "play again" button.
 
 - Route `/login`: Login page with a form for user authentication. Redirects to `/` if already logged in.
