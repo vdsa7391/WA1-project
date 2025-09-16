@@ -178,12 +178,6 @@
   - length (INTEGER, NOT NULL) – sentence length
 
 
-## Main React Components
-
-- `ListOfSomething` (in `List.js`): component purpose and main functionality
-- `GreatButton` (in `GreatButton.js`): component purpose and main functionality
-- ...
-
   ## Main React Components
 
 - `Header` (in `Header.jsx`): Displays the top navigation bar. Shows login/logout buttons for guests and user information (username, coins, matches played) for logged-in users. It also disables interactions during an active game to prevent interruptions.
@@ -196,16 +190,16 @@
 
 - `Stage2` (in `stages/Stage2.jsx`): Rules and instructions stage. Shows game rules and, for logged-in users, displays their current coin count. Contains the "Start Game" button that triggers Stage3 and activates the timer.
 
-- `Stage3` (in `stages/Stage3.jsx`): Main gameplay stage. Users guess letters or full sentences. Displays alphabet cost for logged-in users and a countdown timer. Handles letter/sentence input and submission to the server API. Automatically navigates to Stage4 when the timer ends.
+- `Stage3` (in `stages/Stage3.jsx`): Main gameplay stage. Users guess letters or full sentences. Displays alphabet cost for logged-in users and a countdown timer. Handles letter/sentence input and submission to the server API. Automatically navigates to Stage 4 when the timer ends or if user win or if user abort the game.
 
-- `Stage4` (in `stages/Stage4.jsx`): Result stage. Displays whether the user won, lost, or ran out of time. Shows final score, coins earned or deducted, and provides buttons to restart the game or navigate to the dashboard/home page.
-
+- `Stage4` (in `stages/Stage4.jsx`): Result stage. Displays whether the user won, lost, abort or ran out of time. Shows final score, coins earned or deducted, and provides buttons to restart the game by redirecting to stage 1.
+  
 - `Timer` (in `Timer.jsx`): Countdown timer component used in Stage3. Starts when the game begins and automatically triggers Stage 4 when time runs out.
 
 
 ## Screenshot
 
-![Screenshot](./img/screenshot.jpg)
+![Screenshot](./img/)
 
 ## Users Credentials
 
