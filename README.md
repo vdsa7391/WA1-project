@@ -4,11 +4,7 @@
 
 ## React Client Application Routes
 
-- Route `/`: page content and purpose
-- Route `/something/:param`: page content and purpose, param specification
-
-- Route`/`: 
-  - Page content and purpose: Main game page.
+- Route`/`: Main game page.
    - The Header is always visible (except on the login page).
      - If not logged in: shows a Login button.
      - If logged in: shows username, matches played, user coins, and Logout button.
@@ -18,8 +14,7 @@
      - Stage 3: The actual game component with masked sentence, alphabet table, and a 60-second countdown timer.
      - Stage 4: Result page showing win/lose outcome, penalties/rewards with a "play again" button.
 
-- Route `/login`: 
-  - Page content and purpose: Login page with a form for user authentication. Redirects to / if already logged in.
+- Route `/login`: Login page with a form for user authentication. Redirects to `/` if already logged in.
 
 ## API Server
 
